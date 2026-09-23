@@ -3,7 +3,7 @@ import Frame from "./Frame.jsx";
 import { Plus, Minus } from "./Icons.jsx";
 import { priceRange } from "../lib/order.js";
 
-export default function ProductCard({ product, onAdd }) {
+export default function ProductCard({ product, onAdd, tone = 0 }) {
   const min = product.moq ?? 1;
   const step = product.step ?? 1;
 
@@ -43,7 +43,7 @@ export default function ProductCard({ product, onAdd }) {
 
   return (
     <article className="product">
-      <Frame className="product-frame" label={`${product.name} photograph`} />
+      <Frame className="product-frame" art={product.art} tone={tone} label={product.name} />
 
       <div className="product-body">
         <p className="product-note">{product.note}</p>

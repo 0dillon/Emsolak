@@ -41,6 +41,7 @@ export const categories = [
 export const products = [
   {
     id: "meat-pie",
+    art: "Pie",
     name: "Meat Pie",
     category: "Pastries",
     note: "Baked to order",
@@ -52,6 +53,7 @@ export const products = [
   },
   {
     id: "chicken-pie",
+    art: "Pie",
     name: "Chicken Pie",
     category: "Pastries",
     note: "Baked to order",
@@ -63,6 +65,7 @@ export const products = [
   },
   {
     id: "sausage-roll",
+    art: "SausageRoll",
     name: "Sausage Roll",
     category: "Pastries",
     note: "Baked to order",
@@ -74,6 +77,7 @@ export const products = [
   },
   {
     id: "donuts",
+    art: "Donut",
     name: "Donuts",
     category: "Pastries",
     note: "Baked to order",
@@ -90,6 +94,7 @@ export const products = [
 
   {
     id: "meat-pie-frozen",
+    art: "Pie",
     name: "Meat Pie",
     category: "Frozen",
     note: "Raw, frozen",
@@ -101,6 +106,7 @@ export const products = [
   },
   {
     id: "chicken-pie-frozen",
+    art: "Pie",
     name: "Chicken Pie",
     category: "Frozen",
     note: "Raw, frozen",
@@ -112,6 +118,7 @@ export const products = [
   },
   {
     id: "sausage-roll-frozen",
+    art: "SausageRoll",
     name: "Sausage Roll",
     category: "Frozen",
     note: "Raw, frozen",
@@ -123,6 +130,7 @@ export const products = [
   },
   {
     id: "peppered-chicken",
+    art: "Drumstick",
     name: "Peppered Chicken",
     category: "Frozen",
     note: "Marinated, frozen",
@@ -134,6 +142,7 @@ export const products = [
 
   {
     id: "cake",
+    art: "Tiers",
     name: "Celebration Cake",
     category: "Cakes",
     note: "Three days notice",
@@ -160,6 +169,7 @@ export const products = [
 
   {
     id: "bread",
+    art: "Loaf",
     name: "Bread",
     category: "Bread",
     note: "Baked daily",
@@ -175,6 +185,7 @@ export const products = [
 
   {
     id: "small-chops",
+    art: "Cookie",
     name: "Small Chops",
     category: "Small Chops",
     note: "Sold by the pack",
@@ -190,6 +201,7 @@ export const products = [
 
   {
     id: "soup",
+    art: "Bowl",
     name: "Soup, by the bowl",
     category: "Kitchen",
     note: "Two days notice",
@@ -207,6 +219,7 @@ export const products = [
   },
   {
     id: "meal-tray",
+    art: "Bowl",
     name: "Party Tray",
     category: "Kitchen",
     note: "Two days notice",

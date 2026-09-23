@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Scatter, { faqScatter } from "./Scatter.jsx";
 import { faqs } from "../config.js";
 
 export default function Faq() {
@@ -6,6 +7,8 @@ export default function Faq() {
 
   return (
     <section className="faq" id="faq">
+      <Scatter items={faqScatter} />
+
       <div className="shell">
         <div className="section-head">
           <div>

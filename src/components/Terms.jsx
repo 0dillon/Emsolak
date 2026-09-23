@@ -1,9 +1,12 @@
 import { Van, Clock, Card, Crate } from "./Icons.jsx";
+import Scatter, { termsScatter } from "./Scatter.jsx";
 import { notice, zones } from "../config.js";
 
 export default function Terms() {
   return (
     <section className="terms" id="terms">
+      <Scatter items={termsScatter} />
+
       <div className="shell">
         <div className="section-head">
           <div>

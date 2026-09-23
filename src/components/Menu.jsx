@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProductCard from "./ProductCard.jsx";
+import Scatter, { menuScatter } from "./Scatter.jsx";
 import { categories, products } from "../config.js";
 
 const ALL = "Everything";
@@ -12,6 +13,8 @@ export default function Menu({ onAdd }) {
 
   return (
     <section className="menu" id="menu">
+      <Scatter items={menuScatter} />
+
       <div className="shell">
         <div className="section-head">
           <div>
@@ -39,8 +42,8 @@ export default function Menu({ onAdd }) {
         </div>
 
         <div className="products">
-          {shown.map((product) => (
-            <ProductCard key={product.id} product={product} onAdd={onAdd} />
+          {shown.map((product, i) => (
+            <ProductCard key={product.id} product={product} onAdd={onAdd} tone={i} />
           ))}
         </div>
       </div>

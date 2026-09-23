@@ -1,31 +1,33 @@
-import Frame from "./Frame.jsx";
+import Cake from "./art/Cake.jsx";
+import Scatter, { heroScatter } from "./Scatter.jsx";
 import { WhatsApp } from "./Icons.jsx";
 import { chatLink } from "../lib/order.js";
 import { facts } from "../config.js";
 
-
 export default function Hero() {
   return (
     <section className="hero" id="top">
+      <Scatter items={heroScatter} />
+
       <div className="shell hero-grid">
-        <div>
-          <p className="kicker">Bakery and bulk catering</p>
+        <div className="hero-copy">
+          <p className="kicker">Bakery and bulk catering, Lagos</p>
 
           <h1>
-            Trays that arrive
+            Feeding Lagos,
             <br />
-            <em>full</em>, and on time.
+            <em>fifty pies</em> at a time.
           </h1>
 
           <p className="lead">
-            Cakes cut for the table, pastry by the hundred, and soups cooked the
+            Cakes for the table, pastry by the hundred, and soups cooked the
             long way. Build your order below and it lands in our WhatsApp,
-            itemised and priced.
+            itemised and priced. No forms, no card, no wahala.
           </p>
 
           <div className="hero-actions">
-            <a href="#menu" className="btn btn-ink">
-              See the menu
+            <a href="#menu" className="btn btn-clay">
+              Show me the menu
             </a>
             <a
               href={chatLink("Hello Emsolak, I would like to ask about an order.")}
@@ -34,7 +36,7 @@ export default function Hero() {
               className="btn btn-line"
             >
               <WhatsApp />
-              Ask a question
+              Just ask us
             </a>
           </div>
 
@@ -48,7 +50,9 @@ export default function Hero() {
           </dl>
         </div>
 
-        <Frame className="hero-frame" label="Hero photograph — a finished cake or a full tray" />
+        <div className="hero-cake">
+          <Cake className="cake" />
+        </div>
       </div>
     </section>
   );

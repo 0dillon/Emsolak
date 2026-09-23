@@ -1,13 +1,14 @@
 import Frame from "./Frame.jsx";
 
+/** Swap `art` for `src` on each of these as real photographs arrive. */
 const shots = [
-  "Wedding cake, three tier",
-  "Meat pies, tray of fifty",
-  "Small chops, deluxe pack",
-  "Peppered chicken",
-  "Milk loaf, sliced",
-  "Birthday cake, buttercream",
-  "Jollof tray, plated",
+  { art: "Tiers", label: "Wedding cake, three tier" },
+  { art: "Pie", label: "Meat pies, tray of fifty" },
+  { art: "Cookie", label: "Small chops, deluxe pack" },
+  { art: "Drumstick", label: "Peppered chicken" },
+  { art: "Loaf", label: "Milk loaf, sliced" },
+  { art: "Cupcake", label: "Birthday cake, buttercream" },
+  { art: "Bowl", label: "Jollof tray, plated" },
 ];
 
 export default function Gallery() {
@@ -20,14 +21,17 @@ export default function Gallery() {
             <h2>What has gone out of the kitchen.</h2>
           </div>
           <p className="lead">
-            Replace these blocks with real photographs. For cakes in
-            particular, they do more selling than any sentence on this page.
+            Swap these drawings for real photographs. For cakes especially,
+            they do more selling than any sentence on this page.
           </p>
         </div>
 
         <div className="gallery-grid">
-          {shots.map((shot) => (
-            <Frame key={shot} label={shot} />
+          {shots.map((shot, i) => (
+            <figure key={shot.label}>
+              <Frame art={shot.art} tone={i} />
+              <figcaption>{shot.label}</figcaption>
+            </figure>
           ))}
         </div>
       </div>
