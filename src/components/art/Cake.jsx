@@ -77,10 +77,11 @@ export default function Cake({ className = "" }) {
       strokeWidth="3.5"
       strokeLinejoin="round"
     >
-      {/* stand */}
-      <ellipse cx="160" cy="382" rx="74" ry="11" fill="#1A5535" />
-      <path d="M146,330 h28 v42 q-14,7 -28,0 Z" fill="#1A5535" />
-      <ellipse cx="160" cy="330" rx="112" ry="16" fill="#237046" />
+      {/* Stand. Orange, not green: the hero ground is forest, and a green
+          stand on it collapses to its outline. */}
+      <ellipse cx="160" cy="382" rx="74" ry="11" fill="#BF4B1E" />
+      <path d="M146,330 h28 v42 q-14,7 -28,0 Z" fill="#BF4B1E" />
+      <ellipse cx="160" cy="330" rx="112" ry="16" fill="#E4681F" />
 
       {/* tiers, bottom to top */}
       <Tier
