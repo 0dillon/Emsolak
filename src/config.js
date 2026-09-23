@@ -5,7 +5,7 @@
 export const business = {
   name: "Emsolak",
   // Country code first, no "+" and no spaces. 08031234567 -> 2348031234567
-  whatsapp: "2348000000000",
+  whatsapp: "2348141249093",
   instagram: "https://instagram.com/emsolak",
   email: "orders@emsolak.com",
   hours: "Monday to Saturday, 8am – 7pm",
