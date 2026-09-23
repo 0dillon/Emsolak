@@ -7,18 +7,15 @@
    ================================================================== */
 
 :root {
-  --white: #ffffff;
-  --paper: #ffffff;
-  --mist: #f1f6f2;
-  --green-pale: #e3efe6;
-  --green-soft: #d3e5d9;
-  --orange-pale: #fdeade;
-  --orange-soft: #fbdcc6;
+  --cream: #fdf6e9;
+  --paper: #fffdf8;
+  --sand: #f6e3c5;
   --forest: #14512f;
   --forest-deep: #0f3b23;
   --clay: #e4681f;
   --clay-dark: #bf4b1e;
   --clay-deep: #a83f14;
+  --berry: #c7365a;
   --sun: #f3a81c;
   --ink: #12301e;
   --ink-60: rgba(18, 48, 30, 0.62);
@@ -50,7 +47,7 @@ html {
 
 body {
   font-family: var(--body);
-  background: var(--white);
+  background: var(--cream);
   color: var(--ink);
   line-height: 1.6;
   font-size: 16px;
@@ -110,43 +107,15 @@ section,
   animation: drift 9s ease-in-out infinite alternate;
 }
 
+.terms .scatter svg {
+  color: #fff;
+  opacity: 0.09;
+}
+
 @keyframes drift {
   to {
     translate: 0 -14px;
   }
-}
-
-/* ---------------- on a colour block ----------------
-   Green and orange are the primary grounds; white is the surface that
-   sits on them. Leads are solid white rather than a tint: at 85% over
-   clay-dark a lead drops to about 4.3:1, just under AA. */
-
-.hero .lead,
-.menu .lead,
-.terms .lead,
-.gallery .lead,
-.faq .lead {
-  color: #fff;
-}
-
-.hero .kicker,
-.menu .kicker,
-.faq .kicker {
-  background: #fff;
-  color: var(--forest);
-}
-
-.menu .kicker {
-  color: var(--clay-dark);
-}
-
-.hero .scatter svg,
-.menu .scatter svg,
-.terms .scatter svg,
-.gallery .scatter svg,
-.faq .scatter svg {
-  color: #fff;
-  opacity: 0.1;
 }
 
 /* ---------------- shared type ---------------- */
@@ -157,8 +126,9 @@ section,
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--clay-dark);
-  background: var(--orange-pale);
+  /* clay-deep: at 11.5px this needs 4.5:1, and clay-dark on sand is 3.94:1 */
+  color: var(--clay-deep);
+  background: var(--sand);
   border: var(--line) solid var(--ink);
   border-radius: 999px;
   padding: 5px 14px;
@@ -211,6 +181,7 @@ section,
 }
 
 .btn-clay {
+  /* clay-dark, not clay: white on bright clay is 3.33:1, this is 4.95:1 */
   background: var(--clay-dark);
   color: #fff;
 }
@@ -223,7 +194,7 @@ section,
   color: var(--ink);
 }
 .btn-line:hover {
-  background: var(--orange-pale);
+  background: var(--sand);
 }
 
 .btn-full {
@@ -241,7 +212,7 @@ section,
   position: sticky;
   top: 0;
   z-index: 40;
-  background: var(--white);
+  background: var(--cream);
   border-bottom: var(--line) solid var(--ink);
   overflow: visible;
 }
@@ -282,7 +253,7 @@ section,
 
 .header nav a:hover {
   color: var(--ink);
-  background: var(--green-pale);
+  background: var(--sand);
   border-color: var(--ink);
 }
 
@@ -323,8 +294,7 @@ section,
 /* ---------------- hero ---------------- */
 
 .hero {
-  background: var(--forest);
-  color: #fff;
+  background: var(--cream);
   padding: 72px 0 88px;
 }
 
@@ -342,8 +312,7 @@ section,
 
 .hero h1 em {
   font-style: italic;
-  /* sun, not clay: brand orange on forest is 2.8:1, sun is 4.64:1 */
-  color: var(--sun);
+  color: var(--clay);
 }
 
 .hero-actions {
@@ -362,7 +331,6 @@ section,
 
 .hero-facts > div {
   background: var(--paper);
-  color: var(--ink);
   border: var(--line) solid var(--ink);
   border-radius: 14px;
   box-shadow: var(--pop-sm);
@@ -443,16 +411,15 @@ section,
   text-align: center;
 }
 
-.tone-0 { background: var(--orange-pale); }
-.tone-1 { background: var(--green-pale); }
-.tone-2 { background: var(--orange-soft); }
-.tone-3 { background: var(--green-soft); }
+.tone-0 { background: var(--sand); }
+.tone-1 { background: #d9e6d6; }
+.tone-2 { background: #fad9c8; }
+.tone-3 { background: #f6dfe4; }
 
 /* ---------------- menu ---------------- */
 
 .menu {
-  background: var(--clay-dark);
-  color: #fff;
+  background: var(--paper);
   border-top: var(--line) solid var(--ink);
   border-bottom: var(--line) solid var(--ink);
   padding: 84px 0;
@@ -485,7 +452,7 @@ section,
 }
 
 .filter:hover {
-  background: var(--green-pale);
+  background: var(--sand);
 }
 
 .filter[data-on="true"] {
@@ -502,7 +469,6 @@ section,
 
 .product {
   background: var(--paper);
-  color: var(--ink);
   border: var(--line) solid var(--ink);
   border-radius: var(--round);
   box-shadow: var(--pop);
@@ -622,8 +588,8 @@ textarea:focus {
 }
 
 input[data-bad="true"] {
-  background: var(--orange-pale);
-  border-color: var(--clay);
+  background: #fde8ec;
+  border-color: var(--berry);
 }
 
 .product-actions {
@@ -652,7 +618,7 @@ input[data-bad="true"] {
 }
 
 .stepper button:hover {
-  background: var(--orange-pale);
+  background: var(--sand);
 }
 
 .stepper input {
@@ -693,7 +659,7 @@ input[data-bad="true"] {
 /* ---------------- terms ---------------- */
 
 .terms {
-  background: var(--forest-deep);
+  background: var(--forest);
   color: #fff;
   padding: 88px 0;
   border-bottom: var(--line) solid var(--ink);
@@ -715,7 +681,7 @@ input[data-bad="true"] {
 }
 
 .term {
-  background: var(--forest);
+  background: var(--forest-deep);
   border: var(--line) solid var(--ink);
   border-radius: var(--round);
   box-shadow: var(--pop);
@@ -774,21 +740,9 @@ input[data-bad="true"] {
 /* ---------------- gallery ---------------- */
 
 .gallery {
-  /* the orange block. clay-dark rather than clay: white text clears AA on it
-     at 4.95:1, where bright clay only reaches 3.3:1 */
-  background: var(--clay-dark);
-  color: #fff;
+  background: var(--sand);
   padding: 88px 0;
   border-bottom: var(--line) solid var(--ink);
-}
-
-.gallery .lead {
-  color: #fff;
-}
-
-.gallery .kicker {
-  background: #fff;
-  color: var(--clay-dark);
 }
 
 .gallery-grid {
@@ -799,7 +753,6 @@ input[data-bad="true"] {
 
 .gallery figure {
   background: var(--paper);
-  color: var(--ink);
   border: var(--line) solid var(--ink);
   border-radius: var(--round);
   box-shadow: var(--pop);
@@ -841,8 +794,7 @@ input[data-bad="true"] {
 /* ---------------- faq ---------------- */
 
 .faq {
-  background: var(--forest);
-  color: #fff;
+  background: var(--cream);
   padding: 88px 0;
 }
 
@@ -853,7 +805,6 @@ input[data-bad="true"] {
 
 .faq-item {
   background: var(--paper);
-  color: var(--ink);
   border: var(--line) solid var(--ink);
   border-radius: 16px;
   box-shadow: var(--pop-sm);
@@ -971,7 +922,7 @@ input[data-bad="true"] {
   bottom: 0;
   z-index: 60;
   width: min(470px, 100%);
-  background: var(--white);
+  background: var(--cream);
   border-left: var(--line) solid var(--ink);
   display: flex;
   flex-direction: column;
@@ -990,7 +941,7 @@ input[data-bad="true"] {
   justify-content: space-between;
   padding: 20px 26px;
   border-bottom: var(--line) solid var(--ink);
-  background: var(--mist);
+  background: var(--sand);
 }
 
 .drawer-head h2 {
@@ -1088,7 +1039,7 @@ input[data-bad="true"] {
 }
 
 .line-remove:hover {
-  color: var(--clay-dark);
+  color: var(--berry);
 }
 
 .details {
