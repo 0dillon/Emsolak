@@ -96,6 +96,8 @@ export const products = [
 
   {
     id: "meat-pie-frozen",
+    photo: "/photos/meat-pies-raw.webp",
+    alt: "Unbaked meat pies, crimped by hand and ready for the freezer",
     art: "Pie",
     name: "Meat Pie",
     category: "Frozen",
@@ -108,6 +110,8 @@ export const products = [
   },
   {
     id: "chicken-pie-frozen",
+    photo: "/photos/pies-tray-raw.webp",
+    alt: "A full tray of unbaked pies glazed and ready to bake",
     art: "Pie",
     name: "Chicken Pie",
     category: "Frozen",
@@ -120,8 +124,8 @@ export const products = [
   },
   {
     id: "sausage-roll-frozen",
-    photo: "/photos/frozen-rolls.webp",
-    alt: "Frozen sausage rolls and puff puff, bagged by the box",
+    photo: "/photos/sausage-rolls-raw.webp",
+    alt: "Rolled, unbaked sausage rolls lined up on a baking tray",
     art: "SausageRoll",
     name: "Sausage Roll",
     category: "Frozen",
@@ -134,6 +138,8 @@ export const products = [
   },
   {
     id: "peppered-chicken",
+    photo: "/photos/peppered-chicken.webp",
+    alt: "Marinated chicken portioned and bagged for the freezer",
     art: "Drumstick",
     name: "Peppered Chicken",
     category: "Frozen",
