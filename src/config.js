@@ -175,6 +175,8 @@ export const products = [
 
   {
     id: "bread",
+    photo: "/photos/bread.webp",
+    alt: "Stacks of freshly baked loaves bagged for delivery",
     art: "Loaf",
     name: "Bread",
     category: "Bread",

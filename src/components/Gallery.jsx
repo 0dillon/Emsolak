@@ -18,6 +18,8 @@ const shots = [
     alt: "More than a dozen small iced cakes arranged on a table" },
   { src: "/photos/meals-plated.webp", label: "Rice, noodles and stew, plated",
     alt: "Plates of rice and noodles served with a vegetable and egg stew" },
+  { src: "/photos/bread.webp", label: "Bread, a morning's bake bagged",
+    alt: "Stacks of freshly baked loaves bagged and ready for delivery" },
 ];
 
 export default function Gallery() {
