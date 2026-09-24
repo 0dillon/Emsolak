@@ -43,7 +43,14 @@ export default function ProductCard({ product, onAdd, tone = 0 }) {
 
   return (
     <article className="product">
-      <Frame className="product-frame" art={product.art} tone={tone} label={product.name} />
+      <Frame
+        className="product-frame"
+        src={product.photo}
+        alt={product.alt}
+        art={product.art}
+        tone={tone}
+        label={product.name}
+      />
 
       <div className="product-body">
         <p className="product-note">{product.note}</p>

@@ -65,6 +65,8 @@ export const products = [
   },
   {
     id: "sausage-roll",
+    photo: "/photos/sausage-rolls.webp",
+    alt: "A tray of freshly baked sausage rolls",
     art: "SausageRoll",
     name: "Sausage Roll",
     category: "Pastries",
@@ -118,6 +120,8 @@ export const products = [
   },
   {
     id: "sausage-roll-frozen",
+    photo: "/photos/frozen-rolls.webp",
+    alt: "Frozen sausage rolls and puff puff, bagged by the box",
     art: "SausageRoll",
     name: "Sausage Roll",
     category: "Frozen",
@@ -142,6 +146,8 @@ export const products = [
 
   {
     id: "cake",
+    photo: "/photos/cakes-anniversary.webp",
+    alt: "Six iced celebration cakes finished with sugar roses",
     art: "Tiers",
     name: "Celebration Cake",
     category: "Cakes",
@@ -185,6 +191,8 @@ export const products = [
 
   {
     id: "small-chops",
+    photo: "/photos/small-chops.webp",
+    alt: "Foil trays of spring rolls, samosa, puff puff and peppered meat",
     art: "Cookie",
     name: "Small Chops",
     category: "Small Chops",
@@ -201,6 +209,8 @@ export const products = [
 
   {
     id: "soup",
+    photo: "/photos/egusi.webp",
+    alt: "A pot of egusi cooked with assorted meat",
     art: "Bowl",
     name: "Soup, by the bowl",
     category: "Kitchen",
@@ -219,6 +229,8 @@ export const products = [
   },
   {
     id: "meal-tray",
+    photo: "/photos/jollof-plates.webp",
+    alt: "Plates of jollof and fried rice served with fish and beef",
     art: "Bowl",
     name: "Party Tray",
     category: "Kitchen",

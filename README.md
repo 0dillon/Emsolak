@@ -26,8 +26,20 @@ in. A product has either one `price` or a list of `variants`.
 2. Update `instagram`, `email` and `hours` in the same file.
 3. Check every price, minimum and notice period.
 4. Check the three `facts` under the headline are actually true.
-5. Add real photographs. Drop them in `public/` and pass `src` to each `<Frame>` — the
-   sand-coloured blocks name the shot each one is waiting for.
+5. Fill the gaps in the photography. Six products and the whole gallery use real
+   photographs; meat pie, chicken pie, donuts, bread and peppered chicken still fall
+   back to silhouettes. See "Photographs" below.
+
+## Photographs
+
+Photos live in `public/photos/` and are referenced from `src/config.js` as
+`photo: "/photos/name.webp"` with an `alt` line describing the shot. A product
+without a `photo` falls back to its drawn silhouette, so the menu never shows a
+hole. The gallery's own list is at the top of `src/components/Gallery.jsx`.
+
+To add one: save it into `public/photos/`, keep the long edge around 1100px and
+export as WebP at quality 80 — the whole set is about 680 kB, which matters on
+mobile data. Then add the `photo` and `alt` lines to that product.
 
 ## Running it
 
