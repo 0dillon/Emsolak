@@ -14,20 +14,20 @@ export default function Hero() {
           <p className="kicker">Bakery and bulk catering, Lagos</p>
 
           <h1>
-            Feeding Lagos,
+            Cakes, pastry and party food,
             <br />
-            <em>fifty pies</em> at a time.
+            <em>baked in Lagos.</em>
           </h1>
 
           <p className="lead">
-            Cakes for the table, pastry by the hundred, and soups cooked the
-            long way. Build your order below and it lands in our WhatsApp,
-            itemised and priced. No forms, no card, no wahala.
+            Priced per piece, per pack and per tray. Choose what you need
+            below and send it to us on WhatsApp. We confirm the delivery fee
+            before anything is paid.
           </p>
 
           <div className="hero-actions">
             <a href="#menu" className="btn btn-clay">
-              Show me the menu
+              See the menu
             </a>
             <a
               href={chatLink("Hello Emsolak, I would like to ask about an order.")}
@@ -36,7 +36,7 @@ export default function Hero() {
               className="btn btn-line"
             >
               <WhatsApp />
-              Just ask us
+              Message us
             </a>
           </div>
 

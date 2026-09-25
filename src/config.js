@@ -12,10 +12,11 @@ export const business = {
   serves: "Lagos and Ogun State",
 };
 
-/* Shown under the headline. Keep these true — change or delete any that are not. */
+/* Shown under the headline: the things a customer checks before ordering.
+   Keep these true — change or delete any that are not. */
 export const facts = [
-  ["Two states", "Lagos and Ogun, delivered"],
-  ["24 hours", "Turnaround on bulk pastry"],
+  ["Mon to Sat", "8am until 7pm"],
+  ["Lagos & Ogun", "Delivered, or collect free"],
   ["Bulk or single", "One cake or fifty trays"],
 ];
 
@@ -172,7 +173,7 @@ export const products = [
     options: [
       {
         key: "Flavour",
-        choices: ["Vanilla", "Chocolate", "Red velvet", "Carrot", "Marble", "Fruit"],
+        choices: ["Vanilla", "Chocolate", "Red velvet"],
       },
       { key: "Finish", choices: ["Buttercream", "Fondant", "Whipped cream"] },
     ],
