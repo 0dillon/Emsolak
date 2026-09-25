@@ -15,8 +15,9 @@ Nothing else needs touching to run the business.
   price: 1000, unit: "piece", moq: 10, step: 5, desc: "..." }
 ```
 
-`moq` is the minimum order quantity and `step` is the increment the +/− buttons move
-in. A product has either one `price` or a list of `variants`.
+`moq` is the minimum order quantity. A product has either one `price` or a list of
+`variants`. The +/− buttons move by one; set `step` on a product if it should be
+ordered in larger multiples instead.
 
 ## Before going live
 

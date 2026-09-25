@@ -50,7 +50,6 @@ export const products = [
     price: 1000,
     unit: "piece",
     moq: 10,
-    step: 5,
   },
   {
     id: "chicken-pie",
@@ -62,7 +61,6 @@ export const products = [
     price: 1000,
     unit: "piece",
     moq: 10,
-    step: 5,
   },
   {
     id: "sausage-roll",
@@ -76,7 +74,6 @@ export const products = [
     price: 1000,
     unit: "piece",
     moq: 10,
-    step: 5,
   },
   {
     id: "donuts",
@@ -87,7 +84,6 @@ export const products = [
     desc: "Soft, slow-proofed and finished the morning they go out.",
     unit: "piece",
     moq: 10,
-    step: 5,
     variants: [
       { name: "Sugar glazed", price: 1000 },
       { name: "Jam filled", price: 1000 },
@@ -107,7 +103,6 @@ export const products = [
     price: 800,
     unit: "piece",
     moq: 20,
-    step: 10,
   },
   {
     id: "chicken-pie-frozen",
@@ -121,7 +116,6 @@ export const products = [
     price: 800,
     unit: "piece",
     moq: 20,
-    step: 10,
   },
   {
     id: "sausage-roll-frozen",
@@ -135,7 +129,6 @@ export const products = [
     price: 800,
     unit: "piece",
     moq: 20,
-    step: 10,
   },
   {
     id: "peppered-chicken",

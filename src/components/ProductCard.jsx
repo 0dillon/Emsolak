@@ -105,7 +105,8 @@ export default function ProductCard({ product, onAdd, tone = 0 }) {
 
         {min > 1 && (
           <p className="minimum">
-            Minimum {min} {product.unit}s, ordered in {step}s
+            Minimum {min} {product.unit}s
+            {step > 1 && `, ordered in ${step}s`}
           </p>
         )}
 
