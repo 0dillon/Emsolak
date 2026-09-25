@@ -11,8 +11,6 @@ export default function Hero() {
 
       <div className="shell hero-grid">
         <div className="hero-copy">
-          <p className="kicker">Bakery and bulk catering, Lagos</p>
-
           <h1>
             Cakes, pastry and party food,
             <br />
