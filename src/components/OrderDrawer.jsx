@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Close, WhatsApp } from "./Icons.jsx";
 import { zones } from "../config.js";
 import { naira, describe, subtotalOf, buildInvoice, chatLink } from "../lib/order.js";
+import { validateOrder, normalisePhone, earliestDate, longDate, longestLead } from "../lib/validate.js";
 
 const blank = {
   name: "",
@@ -15,7 +16,7 @@ const blank = {
 export default function OrderDrawer({ cart, onRemove, onClose, onSent }) {
   const [customer, setCustomer] = useState(blank);
   const [zoneIndex, setZoneIndex] = useState(0);
-  const [missing, setMissing] = useState(null);
+  const [error, setError] = useState(null);
   const bodyRef = useRef(null);
 
   useEffect(() => {
@@ -36,30 +37,32 @@ export default function OrderDrawer({ cart, onRemove, onClose, onSent }) {
 
   const set = (key) => (e) => {
     setCustomer((prev) => ({ ...prev, [key]: e.target.value }));
-    setMissing(null);
+    setError((prev) => (prev && prev.field === key ? null : prev));
   };
 
-  const send = () => {
-    const required = [
-      ["name", "We need a name for the order"],
-      ["phone", "We need a phone number to reach you"],
-      ...(pickup ? [] : [["address", "We need the delivery address"]]),
-      ["date", "Tell us the date you need it"],
-    ];
+  /* Shown under the field it belongs to, so the reason sits next to the fix. */
+  const fault = (field) =>
+    error && error.field === field ? <p className="field-error">{error.message}</p> : null;
 
-    const gap = required.find(([key]) => !customer[key].trim());
-    if (gap) {
-      setMissing(gap[0]);
-      bodyRef.current?.querySelector(`[name="${gap[0]}"]`)?.focus();
+  const send = () => {
+    const problem = validateOrder({ customer, cart, pickup });
+    if (problem) {
+      setError(problem);
+      const field = bodyRef.current?.querySelector(`[name="${problem.field}"]`);
+      field?.focus();
+      field?.scrollIntoView({ block: "center", behavior: "smooth" });
       return;
     }
 
-    const { text } = buildInvoice({ cart, customer, zone });
+    /* Send one tidy shape of phone number, whatever was typed. */
+    const tidy = { ...customer, phone: normalisePhone(customer.phone) };
+    const { text } = buildInvoice({ cart, customer: tidy, zone });
     window.open(chatLink(text), "_blank", "noopener");
     onSent();
   };
 
-  const today = new Date().toISOString().slice(0, 10);
+  const earliest = earliestDate(cart);
+  const lead = longestLead(cart);
 
   return (
     <>
@@ -113,9 +116,10 @@ export default function OrderDrawer({ cart, onRemove, onClose, onSent }) {
                     name="name"
                     value={customer.name}
                     onChange={set("name")}
-                    data-bad={missing === "name"}
+                    data-bad={error?.field === "name"}
                     placeholder="Tolu Adebayo"
                   />
+                  {fault("name")}
                 </label>
 
                 <label className="field">
@@ -126,9 +130,10 @@ export default function OrderDrawer({ cart, onRemove, onClose, onSent }) {
                     inputMode="tel"
                     value={customer.phone}
                     onChange={set("phone")}
-                    data-bad={missing === "phone"}
+                    data-bad={error?.field === "phone"}
                     placeholder="0803 000 0000"
                   />
+                  {fault("phone")}
                 </label>
 
                 <label className="field">
@@ -152,9 +157,10 @@ export default function OrderDrawer({ cart, onRemove, onClose, onSent }) {
                       name="address"
                       value={customer.address}
                       onChange={set("address")}
-                      data-bad={missing === "address"}
+                      data-bad={error?.field === "address"}
                       placeholder="12 Admiralty Way, Lekki Phase 1"
                     />
+                    {fault("address")}
                   </label>
                 )}
 
@@ -164,10 +170,10 @@ export default function OrderDrawer({ cart, onRemove, onClose, onSent }) {
                     <input
                       name="date"
                       type="date"
-                      min={today}
+                      min={earliest}
                       value={customer.date}
                       onChange={set("date")}
-                      data-bad={missing === "date"}
+                      data-bad={error?.field === "date"}
                     />
                   </label>
 
@@ -181,6 +187,16 @@ export default function OrderDrawer({ cart, onRemove, onClose, onSent }) {
                     />
                   </label>
                 </div>
+
+                {/* full width: the date message is a sentence, not a label */}
+                {fault("date")}
+
+                {lead.days > 0 && !fault("date") && (
+                  <p className="field-hint">
+                    {lead.name} needs {lead.days === 1 ? "a day" : `${lead.days} days`}{" "}
+                    notice, so the earliest is {longDate(earliest)}.
+                  </p>
+                )}
 
                 <label className="field">
                   <span>Anything we should know</span>

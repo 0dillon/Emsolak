@@ -37,11 +37,14 @@ export const categories = [
 ];
 
 /* price OR variants[{name, price}]
-   moq  — minimum order quantity
+   moq      — minimum order quantity
+   leadDays — days notice needed; the order form refuses an earlier date,
+              taking the longest lead time across the basket
    step — increment the quantity buttons move in                     */
 export const products = [
   {
     id: "meat-pie",
+    leadDays: 1,
     art: "Pie",
     name: "Meat Pie",
     category: "Pastries",
@@ -53,6 +56,7 @@ export const products = [
   },
   {
     id: "chicken-pie",
+    leadDays: 1,
     art: "Pie",
     name: "Chicken Pie",
     category: "Pastries",
@@ -64,6 +68,7 @@ export const products = [
   },
   {
     id: "sausage-roll",
+    leadDays: 1,
     photo: "/photos/sausage-rolls.webp",
     alt: "A tray of freshly baked sausage rolls",
     art: "SausageRoll",
@@ -77,6 +82,7 @@ export const products = [
   },
   {
     id: "donuts",
+    leadDays: 1,
     art: "Donut",
     name: "Donuts",
     category: "Pastries",
@@ -93,6 +99,7 @@ export const products = [
 
   {
     id: "meat-pie-frozen",
+    leadDays: 1,
     photo: "/photos/meat-pies-raw.webp",
     alt: "Unbaked meat pies, crimped by hand and ready for the freezer",
     art: "Pie",
@@ -106,6 +113,7 @@ export const products = [
   },
   {
     id: "chicken-pie-frozen",
+    leadDays: 1,
     photo: "/photos/pies-tray-raw.webp",
     alt: "A full tray of unbaked pies glazed and ready to bake",
     art: "Pie",
@@ -119,6 +127,7 @@ export const products = [
   },
   {
     id: "sausage-roll-frozen",
+    leadDays: 1,
     photo: "/photos/sausage-rolls-raw.webp",
     alt: "Rolled, unbaked sausage rolls lined up on a baking tray",
     art: "SausageRoll",
@@ -132,6 +141,7 @@ export const products = [
   },
   {
     id: "peppered-chicken",
+    leadDays: 1,
     photo: "/photos/peppered-chicken.webp",
     alt: "Marinated chicken portioned and bagged for the freezer",
     art: "Drumstick",
@@ -146,6 +156,7 @@ export const products = [
 
   {
     id: "cake",
+    leadDays: 3,
     photo: "/photos/cakes-anniversary.webp",
     alt: "Six iced celebration cakes finished with sugar roses",
     art: "Tiers",
@@ -175,6 +186,7 @@ export const products = [
 
   {
     id: "bread",
+    leadDays: 1,
     photo: "/photos/bread.webp",
     alt: "Stacks of freshly baked loaves bagged for delivery",
     art: "Loaf",
@@ -193,6 +205,7 @@ export const products = [
 
   {
     id: "small-chops",
+    leadDays: 1,
     photo: "/photos/small-chops.webp",
     alt: "Foil trays of spring rolls, samosa, puff puff and peppered meat",
     art: "Cookie",
@@ -211,6 +224,7 @@ export const products = [
 
   {
     id: "soup",
+    leadDays: 2,
     photo: "/photos/egusi.webp",
     alt: "A pot of egusi cooked with assorted meat",
     art: "Bowl",
@@ -231,6 +245,7 @@ export const products = [
   },
   {
     id: "meal-tray",
+    leadDays: 2,
     photo: "/photos/jollof-plates.webp",
     alt: "Plates of jollof and fried rice served with fish and beef",
     art: "Bowl",

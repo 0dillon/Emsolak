@@ -54,6 +54,16 @@ npm install
 npm run dev
 ```
 
+## Tests
+
+```bash
+npm test
+```
+
+Covers the order form's rules: phone normalisation, and the date checks that
+refuse a day already past, a date that never existed such as 31 February, and
+any day earlier than the notice the basket needs.
+
 ## Building and hosting
 
 ```bash
