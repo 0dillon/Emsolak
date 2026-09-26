@@ -6,8 +6,8 @@ import Frame from "./Frame.jsx";
  * only sits flush at 9 or 13 tiles. At 10 the last row holds a single tile.
  */
 const shots = [
-  { src: "/photos/cake-wedding.webp", label: "Three tier wedding cake, white and gold",
-    alt: "A three tier white wedding cake with gold lace detail and sugar roses" },
+  { src: "/photos/cake-three-tier.webp", label: "Three tier birthday cake, white and gold",
+    alt: "A three tier white birthday cake with gold lace detail and sugar roses" },
   { src: "/photos/small-chops.webp", label: "Small chops, trays for an event",
     alt: "Foil trays of spring rolls, samosa, puff puff and peppered meat skewers" },
   { src: "/photos/cakes-anniversary.webp", label: "Anniversary cakes, sugar roses",
@@ -30,8 +30,8 @@ const shots = [
     alt: "Plates of rice and noodles served with a vegetable and egg stew" },
   { src: "/photos/pies-tray-raw.webp", label: "Pies by the tray, before the oven",
     alt: "A full tray of unbaked pies, glazed and ready to bake" },
-  { src: "/photos/frozen-rolls.webp", label: "Frozen supply, bagged by the box",
-    alt: "Frozen sausage rolls and puff puff, individually bagged in a box" },
+  { src: "/photos/packaged-supply.webp", label: "Packaged supply, bagged by the box",
+    alt: "Sausage rolls and puff puff, individually bagged in a box" },
 ];
 
 export default function Gallery() {
