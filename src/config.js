@@ -156,13 +156,13 @@ export const products = [
 
   {
     id: "cake",
-    leadDays: 3,
+    leadDays: 1,
     photo: "/photos/cakes-anniversary.webp",
     alt: "Six iced celebration cakes finished with sugar roses",
     art: "Tiers",
     name: "Celebration Cake",
     category: "Cakes",
-    note: "Three days notice",
+    note: "24 hours notice",
     desc: "Birthdays, weddings and corporate. Send your reference photo in the chat once you have ordered.",
     unit: "cake",
     moq: 1,
@@ -265,7 +265,7 @@ export const products = [
 ];
 
 export const notice = [
-  ["Cakes", "Three days"],
+  ["Cakes", "Twenty four hours"],
   ["Bulk pastries", "Twenty four hours"],
   ["Small chops", "Twenty four hours"],
   ["Soups and trays", "Two days"],
@@ -274,7 +274,7 @@ export const notice = [
 export const faqs = [
   {
     q: "How much notice do you need?",
-    a: "Cakes need three days, bulk pastries and small chops twenty four hours, soups and party trays two days. If your event is sooner than that, message us anyway and we will tell you honestly whether we can do it.",
+    a: "Cakes, bulk pastries and small chops need twenty four hours. Soups and party trays need two days. If your event is sooner than that, message us anyway and we will tell you honestly whether we can do it.",
   },
   {
     q: "Where do you deliver?",

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Close, WhatsApp } from "./Icons.jsx";
 import { zones } from "../config.js";
 import { naira, describe, subtotalOf, buildInvoice, chatLink } from "../lib/order.js";
-import { validateOrder, normalisePhone, earliestDate, longDate, longestLead } from "../lib/validate.js";
+import { validateOrder, normalisePhone, earliestDate, longDate, longestLead, leadPhrase } from "../lib/validate.js";
 
 const blank = {
   name: "",
@@ -193,8 +193,8 @@ export default function OrderDrawer({ cart, onRemove, onClose, onSent }) {
 
                 {lead.days > 0 && !fault("date") && (
                   <p className="field-hint">
-                    {lead.name} needs {lead.days === 1 ? "a day" : `${lead.days} days`}{" "}
-                    notice, so the earliest is {longDate(earliest)}.
+                    {lead.name} needs {leadPhrase(lead.days)} notice, so the
+                    earliest is {longDate(earliest)}.
                   </p>
                 )}
 

@@ -64,6 +64,11 @@ Covers the order form's rules: phone normalisation, and the date checks that
 refuse a day already past, a date that never existed such as 31 February, and
 any day earlier than the notice the basket needs.
 
+Notice periods are `leadDays` on each product in `src/config.js`. Change one
+there and the date picker, the warning under the field, the notice table and
+the FAQ all follow — but the table and the FAQ carry their own wording, so
+check those read right too.
+
 ## Building and hosting
 
 ```bash

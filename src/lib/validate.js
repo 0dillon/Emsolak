@@ -46,6 +46,9 @@ export function parseStrictDate(iso) {
   return survived ? date : null;
 }
 
+/** "24 hours" reads better than "1 day", and matches the notice table. */
+export const leadPhrase = (days) => (days === 1 ? "24 hours" : `${days} days`);
+
 /** The item in the basket that needs the most notice. */
 export function longestLead(cart) {
   let days = 0;
@@ -127,7 +130,7 @@ export function validateOrder({ customer, cart, pickup }) {
     return {
       field: "date",
       message:
-        `${driver} needs ${days === 1 ? "a day" : `${days} days`} notice, ` +
+        `${driver} needs ${leadPhrase(days)} notice, ` +
         `so the earliest we can do this order is ${longDate(earliest)}.`,
     };
   }

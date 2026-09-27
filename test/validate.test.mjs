@@ -25,10 +25,12 @@ const cake = [{ id: "cake", qty: 1 }];
 const soup = [{ id: "soup", qty: 1 }];
 
 is("pies lead", longestLead(pies).days, 1);
-is("cake lead", longestLead(cake).days, 3);
+is("cake lead", longestLead(cake).days, 1);
 is("soup lead", longestLead(soup).days, 2);
-is("basket takes the longest", longestLead([...pies, ...cake]).days, 3);
-is("earliest for cake", earliestDate(cake), day(3));
+is("basket takes the longest", longestLead([...pies, ...soup]).days, 2);
+is("soup drives a mixed basket", longestLead([...pies, ...soup]).name, "Soup, by the bowl");
+is("earliest for cake", earliestDate(cake), day(1));
+is("earliest for soup", earliestDate(soup), day(2));
 
 const base = { name: "Tolu", phone: "08030000000", address: "12 Admiralty Way, Lekki", date: day(3), time: "", notes: "" };
 const check = (over, cart = cake, pickup = false) =>
@@ -46,8 +48,10 @@ is("address skipped on pickup", check({ address: "" }, cake, true), null);
 is("no date",             check({ date: "" }), "date");
 is("yesterday",           check({ date: day(-1) }), "date");
 is("today for a cake",    check({ date: day(0) }), "date");
-is("two days for a cake", check({ date: day(2) }), "date");
-is("three days is fine",  check({ date: day(3) }), null);
+is("tomorrow for a cake", check({ date: day(1) }), null);
+is("tomorrow for soup",   check({ date: day(1) }, soup), "date");
+is("two days for soup",   check({ date: day(2) }, soup), null);
+is("well ahead is fine",  check({ date: day(3) }), null);
 is("tomorrow for pies",   check({ date: day(1) }, pies), null);
 is("today for pies",      check({ date: day(0) }, pies), "date");
 is("impossible past date",   check({ date: "2026-02-31" }), "date");
