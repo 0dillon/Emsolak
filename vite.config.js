@@ -159,6 +159,30 @@ function seo() {
         source: `User-agent: *\nAllow: /\n\nSitemap: ${canonical}/sitemap.xml\n`,
       });
 
+      /* Netlify reads this from the root of whatever is deployed, so the
+         caching survives a drag-and-drop upload. netlify.toml does not. */
+      this.emitFile({
+        type: "asset",
+        fileName: "_headers",
+        source: [
+          "/assets/*",
+          "  Cache-Control: public, max-age=31536000, immutable",
+          "/fonts/*",
+          "  Cache-Control: public, max-age=31536000, immutable",
+          "/photos/*",
+          "  Cache-Control: public, max-age=86400, s-maxage=604800",
+          "/*.webp",
+          "  Cache-Control: public, max-age=86400, s-maxage=604800",
+          "/share.jpg",
+          "  Cache-Control: public, max-age=86400",
+          "/",
+          "  Cache-Control: public, max-age=0, must-revalidate",
+          "  X-Content-Type-Options: nosniff",
+          "  Referrer-Policy: strict-origin-when-cross-origin",
+          "",
+        ].join("\n"),
+      });
+
       const today = new Date().toISOString().slice(0, 10);
       this.emitFile({
         type: "asset",

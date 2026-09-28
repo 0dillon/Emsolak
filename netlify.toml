@@ -8,28 +8,6 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Hashed filenames, so they can be cached forever.
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Photographs and fonts change rarely and are not hashed; a day of browser
-# cache with a long CDN cache keeps repeat visits cheap on mobile data.
-[[headers]]
-  for = "/photos/*"
-  [headers.values]
-    Cache-Control = "public, max-age=86400, s-maxage=604800"
-
-[[headers]]
-  for = "/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# The page itself must revalidate, or a price change would not reach anyone.
-[[headers]]
-  for = "/"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+# Cache and security headers live in public/_headers, not here: this file is
+# only read when Netlify builds from the repository, while _headers ships
+# inside dist and so applies to a drag-and-drop deploy too.
