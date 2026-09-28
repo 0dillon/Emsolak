@@ -1,4 +1,4 @@
-import { business } from "../config.js";
+import { business, locations } from "../config.js";
 import { chatLink } from "../lib/order.js";
 
 export default function Footer() {
@@ -9,17 +9,19 @@ export default function Footer() {
           <div>
             <span className="wordmark">Emsolak.</span>
             <p>
-              A Lagos kitchen baking cakes, pastry and party food, supplying
+              Two kitchens baking cakes, pastry and party food, supplying
               households, events and shops across {business.serves}.
             </p>
           </div>
 
           <div>
-            <h4>Menu</h4>
-            <a href="#menu">Pastries</a>
-            <a href="#menu">Frozen supply</a>
-            <a href="#menu">Cakes</a>
-            <a href="#menu">Small chops and trays</a>
+            <h4>Our kitchens</h4>
+            {locations.map((place) => (
+              <address key={place.id}>
+                <b>{place.label}</b>
+                {place.streetAddress}, {place.locality}, {place.region}
+              </address>
+            ))}
           </div>
 
           <div>

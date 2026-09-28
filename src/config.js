@@ -15,26 +15,39 @@ export const site = {
   locale: "en_NG",
 };
 
-/* Used for the Google listing and the structured data. Fill in the real
-   street and city: a local business with no address is much harder to
-   find in "bakery near me" searches. Set `streetAddress` to null to
-   leave the address off the site entirely. */
-export const location = {
-  streetAddress: "REPLACE WITH YOUR STREET ADDRESS",
-  locality: "Lagos",
-  region: "Lagos State",
-  country: "NG",
-  /* From Google Maps: right click your shop, the numbers at the top. */
-  latitude: null,
-  longitude: null,
-};
+/* The branches, shown in the footer and given to Google as the business
+   addresses. The first is treated as the main one. Add `latitude` and
+   `longitude` from Google Maps — right click the pin, the numbers at the
+   top — and each branch becomes locatable in "bakery near me" searches. */
+export const locations = [
+  {
+    id: "ikorodu",
+    label: "Ikorodu, Lagos",
+    streetAddress: "14 Oremeji Street, Ogolonto",
+    locality: "Ikorodu",
+    region: "Lagos State",
+    country: "NG",
+    latitude: null,
+    longitude: null,
+  },
+  {
+    id: "loburo",
+    label: "Loburo, Ogun",
+    streetAddress: "Peace Estate, opposite Redemption Camp",
+    locality: "Loburo",
+    region: "Ogun State",
+    country: "NG",
+    latitude: null,
+    longitude: null,
+  },
+];
 
 export const business = {
   name: "Emsolak",
   // Country code first, no "+" and no spaces. 08031234567 -> 2348031234567
   whatsapp: "2348141249093",
   instagram: "https://instagram.com/emsolak",
-  email: "orders@emsolak.com",
+  email: "giftcateringsolutions@yahoo.com",
   hours: "Monday to Saturday, 8am – 7pm",
   /* The same hours in the format Google reads. Keep it in step with the
      line above, which is the one shown on the page. */
@@ -50,8 +63,11 @@ export const facts = [
   ["Bulk or single", "One cake or fifty trays"],
 ];
 
+/* fee 0 counts as collection, and the order form then stops asking for a
+   delivery address. With two kitchens the customer has to say which. */
 export const zones = [
-  { name: "Pickup at our kitchen", fee: 0 },
+  { name: "Collect from Ikorodu, Lagos", fee: 0 },
+  { name: "Collect from Loburo, Ogun", fee: 0 },
   { name: "Lagos — Mainland", fee: null },
   { name: "Lagos — Island, Lekki, Ajah", fee: null },
   { name: "Ogun State", fee: null },

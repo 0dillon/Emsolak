@@ -72,10 +72,14 @@ check those read right too.
 ## Search, sharing and speed
 
 `vite.config.js` generates everything a crawler or a link preview reads —
-canonical tag, Open Graph and Twitter tags, `Bakery` and `FAQPage` structured
-data, `robots.txt` and `sitemap.xml` — from `site`, `location` and `business`
-in `src/config.js`. Change the address or the hours in one place and all of it
-follows.
+canonical tag, Open Graph and Twitter tags, structured data, `robots.txt` and
+`sitemap.xml` — from `site`, `locations` and `business` in `src/config.js`.
+Change an address or the hours in one place and all of it follows.
+
+The structured data is one organisation with a `Bakery` branch per kitchen,
+each carrying its own address. Adding `latitude` and `longitude` to a branch in
+`locations` is the single most useful thing left for local search: without
+coordinates Google has to guess where each kitchen is.
 
 `npm run build` also prerenders the page into `dist/index.html`, so the file
 contains the real text rather than an empty `<div>`. Without that step, link

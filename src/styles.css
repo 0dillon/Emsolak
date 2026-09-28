@@ -1244,3 +1244,19 @@ input[data-bad="true"] {
   margin-top: -4px;
   margin-bottom: 16px;
 }
+
+/* ---------------- footer addresses ---------------- */
+
+.footer address {
+  font-style: normal;
+  font-size: 14px;
+  padding: 6px 0 10px;
+  max-width: 30ch;
+}
+
+.footer address b {
+  display: block;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 2px;
+}

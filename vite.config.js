@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { site, business, location, faqs, products } from "./src/config.js";
+import { site, business, locations, faqs, products } from "./src/config.js";
 
 const esc = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -14,44 +14,43 @@ function seo() {
   const canonical = site.url.replace(/\/$/, "");
   const shareImage = canonical + site.shareImage;
 
-  const postal = location.streetAddress && {
+  const postal = (loc) => ({
     "@type": "PostalAddress",
-    streetAddress: location.streetAddress,
-    addressLocality: location.locality,
-    addressRegion: location.region,
-    addressCountry: location.country,
-  };
+    streetAddress: loc.streetAddress,
+    addressLocality: loc.locality,
+    addressRegion: loc.region,
+    addressCountry: loc.country,
+  });
 
-  const geo =
-    location.latitude != null && location.longitude != null
-      ? { "@type": "GeoCoordinates", latitude: location.latitude, longitude: location.longitude }
+  const geoOf = (loc) =>
+    loc.latitude != null && loc.longitude != null
+      ? { "@type": "GeoCoordinates", latitude: loc.latitude, longitude: loc.longitude }
       : undefined;
 
   const cheapest = Math.min(
     ...products.flatMap((p) => (p.variants ? p.variants.map((v) => v.price) : [p.price]))
   );
 
-  const bakery = {
-    "@context": "https://schema.org",
-    "@type": "Bakery",
-    "@id": canonical + "/#business",
+  const orgId = canonical + "/#org";
+
+  /* One organisation with a branch per kitchen. Google wants each location
+     as its own node with its own address; the menu and the contact details
+     belong to the business above them rather than being repeated. */
+  const org = {
+    "@type": ["Organization", "FoodEstablishment"],
+    "@id": orgId,
     name: business.name,
     url: canonical,
     image: shareImage,
+    logo: canonical + "/icon-512.png",
     description: site.description,
     telephone: "+" + business.whatsapp,
     email: business.email,
-    priceRange: `₦${cheapest.toLocaleString("en-NG")}+`,
-    openingHours: business.openingHours,
-    currenciesAccepted: "NGN",
-    paymentAccepted: "Bank transfer",
-    ...(postal ? { address: postal } : {}),
-    ...(geo ? { geo } : {}),
+    sameAs: [business.instagram].filter(Boolean),
     areaServed: [
       { "@type": "AdministrativeArea", name: "Lagos State" },
       { "@type": "AdministrativeArea", name: "Ogun State" },
     ],
-    sameAs: [business.instagram].filter(Boolean),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Menu",
@@ -64,6 +63,26 @@ function seo() {
     },
   };
 
+  const branches = locations.map((loc) => {
+    const geo = geoOf(loc);
+    return {
+      "@type": "Bakery",
+      "@id": `${canonical}/#${loc.id}`,
+      name: `${business.name} — ${loc.label}`,
+      parentOrganization: { "@id": orgId },
+      url: canonical,
+      image: shareImage,
+      telephone: "+" + business.whatsapp,
+      email: business.email,
+      address: postal(loc),
+      ...(geo ? { geo } : {}),
+      openingHours: business.openingHours,
+      priceRange: `₦${cheapest.toLocaleString("en-NG")}+`,
+      currenciesAccepted: "NGN",
+      paymentAccepted: "Bank transfer",
+    };
+  });
+
   const faqPage = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -74,12 +93,20 @@ function seo() {
     })),
   };
 
+  const main = locations[0];
+  const regionCode = main.region.startsWith("Ogun") ? "NG-OG" : "NG-LA";
+
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [org, ...branches, faqPage],
+  };
+
   const head = `
     <link rel="canonical" href="${canonical}/" />
     <meta name="theme-color" content="#14512f" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="geo.region" content="NG-LA" />
-    <meta name="geo.placename" content="${esc(location.locality)}" />
+    <meta name="geo.region" content="${regionCode}" />
+    <meta name="geo.placename" content="${esc(main.locality)}" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -101,8 +128,7 @@ function seo() {
     <meta name="twitter:description" content="${esc(site.description)}" />
     <meta name="twitter:image" content="${shareImage}" />
 
-    <script type="application/ld+json">${JSON.stringify(bakery)}</script>
-    <script type="application/ld+json">${JSON.stringify(faqPage)}</script>`;
+    <script type="application/ld+json">${JSON.stringify(graph)}</script>`;
 
   /* The SSR pass runs the same plugin, and has no use for these files. */
   let isSsr = false;
