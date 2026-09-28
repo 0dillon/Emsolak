@@ -23,17 +23,28 @@ const keyOf = (item) =>
   [item.id, item.variant, ...item.options.map((o) => `${o.key}=${o.value}`)].join("|");
 
 export default function App() {
-  const [cart, setCart] = useState(read);
+  /* Starts empty so the prerendered markup and the first client render
+     agree; the saved basket arrives on the effect below. Reading storage
+     during render would differ from the server and throw the markup away. */
+  const [cart, setCart] = useState([]);
+  const [restored, setRestored] = useState(false);
   const [open, setOpen] = useState(false);
   const [toast, setToast] = useState("");
 
   useEffect(() => {
+    setCart(read());
+    setRestored(true);
+  }, []);
+
+  useEffect(() => {
+    /* Do not write the empty starting basket over a saved one. */
+    if (!restored) return;
     try {
       localStorage.setItem(STORE, JSON.stringify(cart));
     } catch {
       /* private browsing, the order simply will not survive a reload */
     }
-  }, [cart]);
+  }, [cart, restored]);
 
   useEffect(() => {
     if (!toast) return;

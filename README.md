@@ -69,6 +69,23 @@ there and the date picker, the warning under the field, the notice table and
 the FAQ all follow — but the table and the FAQ carry their own wording, so
 check those read right too.
 
+## Search, sharing and speed
+
+`vite.config.js` generates everything a crawler or a link preview reads —
+canonical tag, Open Graph and Twitter tags, `Bakery` and `FAQPage` structured
+data, `robots.txt` and `sitemap.xml` — from `site`, `location` and `business`
+in `src/config.js`. Change the address or the hours in one place and all of it
+follows.
+
+`npm run build` also prerenders the page into `dist/index.html`, so the file
+contains the real text rather than an empty `<div>`. Without that step, link
+previews and any crawler that does not run JavaScript see nothing, and the
+page cannot paint until the bundle has parsed.
+
+Fonts are self-hosted in `public/fonts`, so the first paint waits on no third
+party. `public/share.jpg` is the 1200x630 card shown when the link is pasted
+into WhatsApp; rebuild it if the branding changes.
+
 ## Building and hosting
 
 ```bash
@@ -76,7 +93,12 @@ npm run build
 ```
 
 That writes `dist/`. Drag it onto [netlify.com/drop](https://app.netlify.com/drop) for
-a free URL, then point a domain at it. Vercel and GitHub Pages work the same way.
+a free URL, then point a domain at it. `netlify.toml` sets the cache headers, so
+connect the repository instead if you want Netlify to build on every push.
+
+Whatever the final address is, put it in `site.url` in `src/config.js` and build
+again — the canonical tag, the sitemap and the link previews all use it, and they
+are wrong until it is right.
 
 ## Layout
 

@@ -2,6 +2,33 @@
    Business details, menu and prices. Edit this file only.
    ------------------------------------------------------------------ */
 
+/* Where the site lives, and what search engines and WhatsApp are told
+   about it. `url` must be the real address with no trailing slash —
+   it is used for the canonical tag, the sitemap and link previews. */
+export const site = {
+  url: "https://emsolak.netlify.app",
+  title: "Emsolak — Cakes, Pastry & Party Food in Lagos",
+  description:
+    "Emsolak bakes cakes, meat pies, chicken pies, donuts, sausage rolls, bread, small chops and party trays. Bulk and frozen supply delivered across Lagos and Ogun State. Order on WhatsApp.",
+  /* Shown when the link is shared. 1200x630. */
+  shareImage: "/share.jpg",
+  locale: "en_NG",
+};
+
+/* Used for the Google listing and the structured data. Fill in the real
+   street and city: a local business with no address is much harder to
+   find in "bakery near me" searches. Set `streetAddress` to null to
+   leave the address off the site entirely. */
+export const location = {
+  streetAddress: "REPLACE WITH YOUR STREET ADDRESS",
+  locality: "Lagos",
+  region: "Lagos State",
+  country: "NG",
+  /* From Google Maps: right click your shop, the numbers at the top. */
+  latitude: null,
+  longitude: null,
+};
+
 export const business = {
   name: "Emsolak",
   // Country code first, no "+" and no spaces. 08031234567 -> 2348031234567
@@ -9,6 +36,9 @@ export const business = {
   instagram: "https://instagram.com/emsolak",
   email: "orders@emsolak.com",
   hours: "Monday to Saturday, 8am – 7pm",
+  /* The same hours in the format Google reads. Keep it in step with the
+     line above, which is the one shown on the page. */
+  openingHours: "Mo-Sa 08:00-19:00",
   serves: "Lagos and Ogun State",
 };
 
